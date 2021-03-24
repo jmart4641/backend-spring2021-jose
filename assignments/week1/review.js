@@ -7,10 +7,10 @@
 var myFirstVariable = "Hello World";
 
 //two variable types, const and let.
-let myFirstVariable = null; // we used to this to avoid scopes(global or local)
+let myVariable = null; // we used to this to avoid scopes(global or local)
 
 // A variable that doesn't change once you have assigned a value. It cannot change it. You cannot reassigned constant.
-const myFirstVariable = null; // value does no change, if a line does not change, we used this. it is good to use const when you know the value won't change.
+const mySecondVariable = null; // value does no change, if a line does not change, we used this. it is good to use const when you know the value won't change.
  
 myFirstVariable = 10;
 
@@ -23,11 +23,11 @@ myFirstVariable = 10;
 true;
 false;
 
-// Array & Objects
+// Array & Objects (HAVE to Have unique name)
 // Arrays are objects, BUT objects are not arrays!
 // This is the most common way to create an array, but there are two way to write arrays.
-let myArray = []; // empty array.
-let myArray = new Array (10); //This one will put it 10 undandetified objects. classes
+let myArray = []; // empty array. Has to have unique name.
+let arrayOne = new Array (10); //This one will put it 10 undandetified objects. Each one should be declare with unique names
 
 myArray[0] = "hello";
 myArray[1000] = "goodbye";
@@ -95,7 +95,7 @@ function myFunction() {
 myFunction();
 
 //passing variable around.
-let a =1;
+let a =100;
 let b = a;
 let c = b;
 let d = c;
@@ -132,3 +132,4 @@ myFunction2("Goodbye world!");
 
 // express for server.
 // when you installed use the LTS which is the long support which is a production development to your client.  Long term support.
+console.log("This Script has finished!");
