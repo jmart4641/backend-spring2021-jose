@@ -1,4 +1,9 @@
+//Name: Martinez, Jose 
+//Date: March 23, 2021
+// Reviewing JavaScript 
+
 // Variables are used too hold data.
+// Variables can hold strings, numbers...
 var myFirstVariable = "Hello World";
 
 //two variable types, const and let.
@@ -22,7 +27,7 @@ false;
 // Arrays are objects, BUT objects are not arrays!
 // This is the most common way to create an array, but there are two way to write arrays.
 let myArray = []; // empty array.
-let myArray = new Array (10); //This one will put it 10 undandetified obejcts. classes
+let myArray = new Array (10); //This one will put it 10 undandetified objects. classes
 
 myArray[0] = "hello";
 myArray[1000] = "goodbye";
