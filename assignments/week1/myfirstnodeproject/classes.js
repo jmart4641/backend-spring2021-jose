@@ -1,3 +1,4 @@
+const { overSome, max } = require("lodash");
 
 
 // Normal objects looks like this
@@ -24,23 +25,33 @@ class Employee {
     // firstName is a parameter without a dot. with do is a property.
     constructor (firstName, lastName, position, workPlace,){
         console.log("New Object");
+       
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
         this.location = workPlace;
         this.active = false;
+        this.energyHours = 16; //Hours of energy.
         this.checkValue();
         // this.created();
+        this.sayHello();
     }
     
-    //Static method
+    //Static method, no objects in that class. Small book of functions
     checkValue() {
         if (!(typeof this.active === "boolean")){
-            console.log("This object has an improper active value!");
+            console.log("This object has an improper active property value!");
+        }
+        if (this.energyHours < 0) {
+            this.energyHours = 0;
+        } else if (this.energyHours > 24){
+            this.energyHours = 24;
         }
     }
 
-
+     sayHello( ) {
+         console.log(`Hello! My name is ${this.firstName} I work as a ${this.position} at ${this.location} How are you doing today?`);
+     }
     // created (){
     //     console.log("A new object is born!");}
 
@@ -48,14 +59,60 @@ class Employee {
     // And what actions can be done.
 
     doWork(hours) {
-        console.log(` ${this.firstName} works for ${hours} hours.`);
+
+        if (!(Number.isNaN(parseInt(hours)))) {
+            hours = parseInt(hours);
+        } else
+
+        // console.log (typeof hours);
+        if (typeof hours != "number") {
+            console.log("The value for hours is not valid! Can't assign work.");
+            return;
+         } //kills this method
+        // } else if (hours === "one"){
+        //     hour = 1;
+        // } text 
+
+        if (this.energyHours - hours < 0) {
+             console.log(`${this.firstName} does not have that much energy! They will for ${this.energyHours} hours instead.`);
+            
+             hours = this.energyHours;
+             this.energyHours = 0;
+
+            //console.log("THis employee can't work for this man hours at the moment");
+            // return // One the return key is that it stops the running. end method early
+        } else { 
+             // this.energyHours -= hours; same as the line below
+            this.energyHours = this.energyHours - hours;
+        }
+      
+        
+        console.log(` ${this.firstName} works for ${hours} hours. They Have ${this.energyHours} hours left of energy`);
         // console.log(this.firstName +" Works for " + hours + " hours."); }
     }
     goToSleep(hours){
+        if (!(Number.isNaN(parseInt(hours)))) {
+            hours = parseInt(hours);
+        } else
+
+        // console.log (typeof hours);
+        if (typeof hours != "number") {
+            console.log("The value for hours is not valid! Can't assign work.");
+            return;
+         }  
+
+
+         if (hours + this.energyHours >24) {
+
+            let maxSleepHours = 24 - this.energyHours;
+             console.log(`${this.firstName} does not need to sleep for that long! They will sleep for instead ${maxSleepHours} hours`);
+             
+             hours = maxSleepHours;
+         }
 
         //This is easier to read. Double quote is faster that the string literal because there are extra step for the computer take.
-
-        console.log(`${this.firstName} goes to sleep for ${hours} hours.`);
+        this.energyHours = this.energyHours + hours;
+        console.log(`${this.firstName} goes to sleep for ${hours} hours. They have ${this.energyHours} hours left of energy.`);
 
     //     console.log(this.firstName + " goes to sleep for " +hours +" hours.")
     // 
@@ -130,3 +187,4 @@ console.log(myStringLiteral);
 console.log(myFirstFactoryObject, secondEmployee,thirdEmployee);
 // How can we give these to data they need.
 //Providing values - thrught parameter
+
